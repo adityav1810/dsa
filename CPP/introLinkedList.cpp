@@ -90,11 +90,12 @@ void printLinkedList(Node *&head)
     cout << endl;
 }
 
-
-void deletebyIndex(Node * &tail ,Node * &head, int index){
+void deletebyIndex(Node *&tail, Node *&head, int index)
+{
     // index = 0
 
-    if(index ==1){
+    if (index == 1)
+    {
         // if index is first element
         Node *temp = head;
         head = head->next;
@@ -102,16 +103,17 @@ void deletebyIndex(Node * &tail ,Node * &head, int index){
         free(temp);
         return;
     }
-    else{
+    else
+    {
         // if index is any element other than 1
         Node *curr = head;
         Node *prev = NULL;
         int pos = 1;
-        while(pos<index){
+        while (pos < index)
+        {
             prev = curr;
             curr = curr->next;
             pos++;
-
         }
 
         prev->next = curr->next;
@@ -119,11 +121,34 @@ void deletebyIndex(Node * &tail ,Node * &head, int index){
         free(curr);
         tail->val = prev->val;
         tail->next = prev->next;
-
     }
+}
 
+void deleteByValue(Node *&head, Node *&tail, int data)
+{
+    /*
+    Delete Element in Linked List based on Value
+    */
 
-
+    if (head->val == data)
+    {
+        Node *temp = head;
+        head = head->next;
+        delete temp;
+    }
+    else
+    {
+        Node *curr = head;
+        Node *prev = NULL;
+        while (curr->val != data)
+        {
+            prev = curr;
+            curr = curr->next;
+        }
+        prev->next = curr->next;
+        curr->next =NULL;
+        delete curr;
+    }
 }
 
 int main()
@@ -150,13 +175,13 @@ int main()
     // printLinkedList(head);
     insertAtIndex(tail, head, 11, 8);
     printLinkedList(head);
-    cout<<"delete node"<<endl;
-    deletebyIndex(tail, head, 8);
-    printLinkedList(head);
-    
-
+    cout << "delete node" << endl;
+    // deletebyIndex(tail, head, 8);
+    // printLinkedList(head);
+deleteByValue(head,tail,9);
+printLinkedList(head);
     cout << "HEAD: " << head->val << " TAIL :" << tail->val << endl;
-// cout<<head->next->val;
+    // cout<<head->next->val;
     return 0;
 }
 
