@@ -180,8 +180,8 @@ int main()
     // printLinkedList(head);
 deleteByValue(head,tail,9);
 printLinkedList(head);
-    cout << "HEAD: " << head->val << " TAIL :" << tail->val << endl;
-    // cout<<head->next->val;
+    cout << "HEAD: " << head->val << " TAIL :" << tail->val <<"TAIL ADDRESS : "<<tail->next<< endl;
+
     return 0;
 }
 
