@@ -26,6 +26,16 @@ void printLL(Node *head){
     }
     cout<<endl;
 }
+Node * recursive2(Node *head){
+    if(head == NULL || head->next == NULL){
+        return head;
+    }
+    Node *shead = recursive2(head->next);
+    head->next->next = head;
+    head->next = NULL;
+    return shead;
+}
+
 
 void recursiveReverseLL(Node *&head,Node*curr,Node *prev){
 
@@ -80,6 +90,9 @@ int main(){
     Node *prev  = NULL;
     recursiveReverseLL(head,curr,prev);
     printLL(head);
+
+    Node * rhead = recursive2(head);
+    printLL(rhead);
 
 
     return 0;
