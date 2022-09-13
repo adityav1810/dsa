@@ -49,6 +49,13 @@ void printLinkedList(Node *head)
 
 Node *solve(Node *h1, Node *h2)
 {
+
+// If h1 has only 1 element
+if(h1->next == NULL){
+    h1->next = h2;
+    return h1;
+}
+
     Node *curr1 = h1;
     Node *next1 = h1->next;
     Node *curr2 = h2;
