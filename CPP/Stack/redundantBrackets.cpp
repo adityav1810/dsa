@@ -7,40 +7,38 @@ bool solve(string s){
     stack<char> st;
     for(int i = 0; i<s.length();i++){
         char ch = s[i];
-        if(ch == '(' || ch == '+' || ch == '-'|| ch == '*'|| ch == '/' ){
+        if(ch == '(' || ch =='+'|| ch =='-'|| ch =='*'|| ch =='/'){
+            // Add opening bracket or operator to stack
             st.push(ch);
         }else{
-            if(ch ==')'){
-                bool isRedundant = true;
-                // check stack for operator after opening bracket
-                while(st.top()!='('){
-                    char top = st.top();
-                    
-                    if(top == '+' || top == '-'|| top == '*'|| top == '/' ){
-                        isRedundant = false;
+            // closing bracket detected
+            bool isRedundant = true;
 
-                    }
-                    st.pop();
-
+            while(st.top()!='('){
+                // traverse stack
+                char top = st.top();
+// if top is an operator; expression is not redundant
+                if(top == '+' || ch =='-'|| ch =='*'|| ch =='/'){
+                    isRedundant = false;
+    
                 }
-                if(isRedundant == true){
-                    return true;
-                }
+                // pop for while loop
                 st.pop();
+
             }
-
+            if(isRedundant){
+                return true;
+            }
         }
-
     }
-return false;
-
+    return false;
 }
 
 
 
 int main(){
     
-    string s = "((ab)";
+    string s = "((a+b)*c)";
     cout<<solve(s);
 
 
