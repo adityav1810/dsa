@@ -11,7 +11,7 @@
     
 
      int getHeight(TreeNode *root){
-        // Height of tree using recursion
+        // Height of tree using queue
         queue<TreeNode*> q;
         if(root == NULL){
             return 0;
