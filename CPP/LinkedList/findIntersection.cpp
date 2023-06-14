@@ -1,11 +1,11 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
+#include<iostream>
+//  * Definition for singly-linked list.
+ struct ListNode {
+      int val;
+      ListNode *next;
+      ListNode(int x) : val(x), next(NULL) {}
+  };
+ 
 ListNode * solve(int d ,ListNode *h1,ListNode *h2){
     int pos = 0;
     ListNode *temp1 = h1;
